@@ -1,14 +1,8 @@
-import express from "express"
-const app = express()
-app.use(express.json())
+import { App } from './app'
 
-const PORT = 3000
+const main = () => {
+    const app = new App()
+    app.listen()
+}
 
-app.get('/ping', (_, res) => {
-    console.log('pinged here !!')
-    return res.json({message: "OK"})
-})
-
-app.listen(PORT, ()=> {
-    console.log('SERVER ON :)')
-})
+main()
