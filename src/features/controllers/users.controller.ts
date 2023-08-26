@@ -7,6 +7,13 @@ export const getUser = async (_req: Request, res: Response) => {
     return res.json({ response })
 }
 
-export const createUser = (_req: Request, res: Response) => {
-    return res.json('WELCOME TO MY API')
+export const createUser = async (req: Request, res: Response) => {
+    const conn = connect()
+    const { user } = req.body
+    const [response] = await conn.query("INSERT INTO user_chat (email, password, role_id) VALUES(?,?,?)", [
+        user.email,
+        user.password,
+        user.role_id
+    ])
+    return res.json({ response })
 }

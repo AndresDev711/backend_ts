@@ -19,10 +19,11 @@ export class App {
 
 	middeware() {
 		this.app.use(morgan('dev'))
+		this.app.use(express.json())
 	}
 
 	routes() {
-		this.app.use( indexRoutes)
+		this.app.use(indexRoutes)
 		this.app.use('/api/v1/', userRoutes)
 	}
 
