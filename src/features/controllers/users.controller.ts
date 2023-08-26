@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { connect } from '../../database/mysql'
+import { User } from '../interface/User'
 
 export const getUser = async (_req: Request, res: Response) => {
     const conn = connect()
@@ -9,7 +10,7 @@ export const getUser = async (_req: Request, res: Response) => {
 
 export const createUser = async (req: Request, res: Response) => {
     const conn = connect()
-    const { user } = req.body
+    const { user }: { user: User } = req.body
     const [response] = await conn.query("INSERT INTO user_chat (email, password, role_id) VALUES(?,?,?)", [
         user.email,
         user.password,
