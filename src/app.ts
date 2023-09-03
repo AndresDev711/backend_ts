@@ -33,6 +33,6 @@ export class App {
 		} catch (error) {
 			console.error("error starting server: ${error}")
 		}
-		console.log("SERVER ON: 3000")
+		console.log("SERVER ON: 3000", this.app.get('port'))
 	}
 }
